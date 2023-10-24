@@ -1,0 +1,84 @@
+{
+    "identifier": "maxgrafik.Convert",
+    "name": "Convert",
+    "organization": "Hendrik Meinl",
+    "description": "Some handy converters for Nova",
+    "version": "1.0",
+    "categories": ["commands"],
+    "bugs": "https://github.com/maxgrafik/Convert.novaextension/issues",
+    "repository": "https://github.com/maxgrafik/Convert.novaextension",
+    "license": "MIT, BSD",
+
+    "main": "main.js",
+
+    "activationEvents": ["*"],
+
+    "entitlements": {
+        "filesystem": "readwrite"
+    },
+
+    "commands": {
+        "editor": [
+            {
+                "title": "Base64 Encode",
+                "command": "maxgrafik.Convert.Base64Encode",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {
+                "title": "Base64 Decode",
+                "command": "maxgrafik.Convert.Base64Decode",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
+                "title": "Base64 Encode File",
+                "command": "maxgrafik.Convert.Base64EncodeFile",
+                "when": "editorHasFocus && !editorHasMultipleSelections"
+            },
+            {
+                "title": "Base64 Decode File",
+                "command": "maxgrafik.Convert.Base64DecodeFile",
+                "when": "editorHasFocus && editorHasSelection && !editorHasMultipleSelections"
+            },
+            {"separator": true},
+            {
+                "title": "URL Encode",
+                "command": "maxgrafik.Convert.URLEncode",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {
+                "title": "URL Decode",
+                "command": "maxgrafik.Convert.URLDecode",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
+                "title": "ASCII to Hex",
+                "command": "maxgrafik.Convert.Ascii2Hex",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {
+                "title": "Hex to ASCII",
+                "command": "maxgrafik.Convert.Hex2Ascii",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
+                "title": "ASCII to Binary",
+                "command": "maxgrafik.Convert.Ascii2Binary",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {
+                "title": "Binary to ASCII",
+                "command": "maxgrafik.Convert.Binary2Ascii",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
+                "title": "Rot13",
+                "command": "maxgrafik.Convert.Rot13",
+                "when": "editorHasFocus && editorHasSelection"
+            }
+        ]
+    }
+}
