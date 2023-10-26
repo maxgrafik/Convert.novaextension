@@ -24,14 +24,6 @@ exports.deactivate = function() {
  * Register Command Handlers
  */
 
-nova.commands.register("maxgrafik.Convert.Base64Encode", editor => {
-    convert(editor, Base64Encode);
-});
-
-nova.commands.register("maxgrafik.Convert.Base64Decode", editor => {
-    convert(editor, Base64Decode);
-});
-
 nova.commands.register("maxgrafik.Convert.Base64EncodeFile", editor => {
     nova.workspace.showFileChooser("", {
         allowFiles: true,
@@ -47,7 +39,25 @@ nova.commands.register("maxgrafik.Convert.Base64EncodeFile", editor => {
                 const byteArray = new Uint8Array(buffer);
                 const base64 = Base64EncodeFile(byteArray);
 
-                editor.insert(base64);
+                const fileType = guessFileType(buffer);
+
+                let dataURL = "";
+
+                switch(fileType) {
+                case ".gif":
+                    dataURL = "data:image/gif;base64,";
+                    break;
+                case ".jpg":
+                    dataURL = "data:image/jpeg;base64,";
+                    break;
+                case ".png":
+                    dataURL = "data:image/png;base64,";
+                    break;
+                default:
+                    dataURL = "data:${0:mediatype};base64,";
+                }
+
+                editor.insert(dataURL + base64, InsertTextFormat.Snippet);
             }
         }
     });
@@ -55,7 +65,9 @@ nova.commands.register("maxgrafik.Convert.Base64EncodeFile", editor => {
 
 nova.commands.register("maxgrafik.Convert.Base64DecodeFile", editor => {
 
-    const text = editor.selectedText.replace(/[ \t\n\f\r]/g, "");
+    const text = editor.selectedText
+        .replace(/[ \t\n\f\r]/g, "")
+        .replace(/data:.*;base64,/, "");
 
     try {
         const buffer = Base64DecodeFile(text);
@@ -93,6 +105,14 @@ nova.commands.register("maxgrafik.Convert.URLEncode", editor => {
 
 nova.commands.register("maxgrafik.Convert.URLDecode", editor => {
     convert(editor, URLDecode);
+});
+
+nova.commands.register("maxgrafik.Convert.Base64Encode", editor => {
+    convert(editor, Base64Encode);
+});
+
+nova.commands.register("maxgrafik.Convert.Base64Decode", editor => {
+    convert(editor, Base64Decode);
 });
 
 nova.commands.register("maxgrafik.Convert.Ascii2Hex", editor => {

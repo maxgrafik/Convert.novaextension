@@ -1,20 +1,20 @@
 # Convert
 
 Some handy converters for Nova:
-* Base64 encode/decode
-* Base64 file encode/decode (e.g. embedded image files)
+* Data URL encode/decode (i.e. embedded image files)
 * URL encode/decode
+* Base64 encode/decode
 * ASCII to Hex / Hex to ASCII
 * Number to Hex / Hex to Number
 * ASCII to binary / binary to ASCII
-* UNIX Timestamp to date
+* UNIX Timestamp to Date
 * Rot13 ... just for fun :)
 
 
 ## Usage
-Select some text in an editor window and choose the appropriate conversion from the *Editor > Convert* submenu.
+Select some text in an editor window and choose the appropriate conversion from the **Editor → Convert** submenu.
 
-To encode an image file, place the cursor where you want to insert the base64 string and choose *Editor > Convert > Base64 Encode File*.
+To encode an image file, place the cursor where you want to insert the data URL and choose **Editor → Convert → Encode File as Data URL**.
 
 
 ## Licenses

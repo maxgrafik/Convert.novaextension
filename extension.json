@@ -20,23 +20,12 @@
     "commands": {
         "editor": [
             {
-                "title": "Base64 Encode",
-                "command": "maxgrafik.Convert.Base64Encode",
-                "when": "editorHasFocus && editorHasSelection"
-            },
-            {
-                "title": "Base64 Decode",
-                "command": "maxgrafik.Convert.Base64Decode",
-                "when": "editorHasFocus && editorHasSelection"
-            },
-            {"separator": true},
-            {
-                "title": "Base64 Encode File",
+                "title": "Encode File as Data URL …",
                 "command": "maxgrafik.Convert.Base64EncodeFile",
                 "when": "editorHasFocus && !editorHasMultipleSelections"
             },
             {
-                "title": "Base64 Decode File",
+                "title": "Decode Data URL",
                 "command": "maxgrafik.Convert.Base64DecodeFile",
                 "when": "editorHasFocus && editorHasSelection && !editorHasMultipleSelections"
             },
@@ -49,6 +38,17 @@
             {
                 "title": "URL Decode",
                 "command": "maxgrafik.Convert.URLDecode",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
+                "title": "Base64 Encode",
+                "command": "maxgrafik.Convert.Base64Encode",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {
+                "title": "Base64 Decode",
+                "command": "maxgrafik.Convert.Base64Decode",
                 "when": "editorHasFocus && editorHasSelection"
             },
             {"separator": true},
