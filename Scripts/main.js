@@ -30,8 +30,16 @@ nova.commands.register("maxgrafik.Convert.Base64EncodeFile", editor => {
         allowMultiple: false
     }, (result) => {
         if (result) {
+
             const filePath = result[0];
-            if (nova.fs.access(filePath, nova.fs.F_OK + nova.fs.R_OK)) {
+            const fileStat = nova.fs.stat(filePath);
+
+            if (!fileStat.isFile() || !nova.fs.access(filePath, nova.fs.F_OK + nova.fs.R_OK)) {
+                nova.workspace.showInformativeMessage("Not a file or the file is not accessible");
+                return;
+            }
+
+            try {
                 const fileObj = nova.fs.open(filePath, "r+b");
                 const buffer = fileObj.read();
                 fileObj.close();
@@ -58,6 +66,9 @@ nova.commands.register("maxgrafik.Convert.Base64EncodeFile", editor => {
                 }
 
                 editor.insert(dataURL + base64, InsertTextFormat.Snippet);
+
+            } catch (error) {
+                nova.workspace.showInformativeMessage(error);
             }
         }
     });
