@@ -3,7 +3,7 @@
     "name": "Convert",
     "organization": "Hendrik Meinl",
     "description": "Some handy converters for Nova",
-    "version": "1.0",
+    "version": "1.1",
     "categories": ["commands"],
     "bugs": "https://github.com/maxgrafik/Convert.novaextension/issues",
     "repository": "https://github.com/maxgrafik/Convert.novaextension",
@@ -64,6 +64,17 @@
             },
             {"separator": true},
             {
+                "title": "Number to Hex",
+                "command": "maxgrafik.Convert.Number2Hex",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {
+                "title": "Hex to Number",
+                "command": "maxgrafik.Convert.Hex2Number",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
                 "title": "ASCII to Binary",
                 "command": "maxgrafik.Convert.Ascii2Binary",
                 "when": "editorHasFocus && editorHasSelection"
@@ -71,6 +82,12 @@
             {
                 "title": "Binary to ASCII",
                 "command": "maxgrafik.Convert.Binary2Ascii",
+                "when": "editorHasFocus && editorHasSelection"
+            },
+            {"separator": true},
+            {
+                "title": "UNIX Timestamp",
+                "command": "maxgrafik.Convert.Timestamp2Date",
                 "when": "editorHasFocus && editorHasSelection"
             },
             {"separator": true},

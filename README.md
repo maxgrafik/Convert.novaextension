@@ -5,7 +5,9 @@ Some handy converters for Nova:
 * Base64 file encode/decode (e.g. embedded image files)
 * URL encode/decode
 * ASCII to Hex / Hex to ASCII
+* Number to Hex / Hex to Number
 * ASCII to binary / binary to ASCII
+* UNIX Timestamp to date
 * Rot13 ... just for fun :)
 
 

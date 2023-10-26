@@ -103,12 +103,24 @@ nova.commands.register("maxgrafik.Convert.Hex2Ascii", editor => {
     convert(editor, Hex2Ascii);
 });
 
+nova.commands.register("maxgrafik.Convert.Number2Hex", editor => {
+    convert(editor, Number2Hex);
+});
+
+nova.commands.register("maxgrafik.Convert.Hex2Number", editor => {
+    convert(editor, Hex2Number);
+});
+
 nova.commands.register("maxgrafik.Convert.Ascii2Binary", editor => {
     convert(editor, Ascii2Binary);
 });
 
 nova.commands.register("maxgrafik.Convert.Binary2Ascii", editor => {
     convert(editor, Binary2Ascii);
+});
+
+nova.commands.register("maxgrafik.Convert.Timestamp2Date", editor => {
+    convert(editor, Timestamp2Date);
 });
 
 nova.commands.register("maxgrafik.Convert.Rot13", editor => {
@@ -192,6 +204,40 @@ function Base64Encode(text) {
 
 function Base64Decode(text) {
     return atob(text.replace(/[ \t\n\f\r]/g, ""));
+}
+
+function Number2Hex(digits) {
+
+    const regex = /^[0-9\s]*$/;
+
+    if (!regex.test(digits)) {
+        throw new Error("Invalid input");
+    }
+
+    const hex = Array.from(digits.matchAll(/\s*[0-9]+\s*/g), m => {
+        return parseInt(m[0]).toString(16).toUpperCase();
+    });
+
+    return hex.join(" ");
+}
+
+function Hex2Number(text) {
+
+    const regex = /^[0-9A-Fa-f\s]*$/;
+
+    if (!regex.test(text)) {
+        throw new Error("Not a HEX string");
+    }
+
+    const numbers = Array.from(text.matchAll(/\s*[0-9A-Fa-f]+\s*/g), m => {
+        return parseInt(m[0], 16);
+    });
+
+    return numbers.join(" ");
+}
+
+function Timestamp2Date(ts) {
+    return new Date(ts*1000).toLocaleString();
 }
 
 
